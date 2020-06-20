@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6db7edc9-1d1d-4f48-ac7d-91e483be0246" >
+		<http:listener-connection host="0.0.0.0" port="9091" />
+	</http:listener-config>
+	<flow name="onpremise-deployment-demoFlow" doc:id="8fa62903-e1f7-4868-b829-cacf2263b178" >
+		<http:listener doc:name="/onpremise-demo" doc:id="4043ec83-7764-4531-9813-c1a4ee38832f" config-ref="HTTP_Listener_config" path="/onpremise-demo"/>
+		<ee:transform doc:name="Transform Message" doc:id="5bc98042-3627-41ad-893b-d903ffaa7769" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	message: "Welcome to first api test"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
