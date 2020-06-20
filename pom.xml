@@ -33,6 +33,15 @@
 				<configuration>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${build-helper-maven-plugin.version}</version>
+				<configuration>
+					<name>newversion.timestamp</name>
+					<pattern>yyyy.MM.dd.HH.mm.ss</pattern>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -73,6 +82,8 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+	
+	
 
     <distributionManagement>
         <repository>
