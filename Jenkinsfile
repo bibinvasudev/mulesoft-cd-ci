@@ -1,1 +1,3 @@
-javaBuild{}
+javaBuild{
+    branchType = "featurebranch"
+}
